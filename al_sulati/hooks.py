@@ -9,6 +9,15 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
+fixtures = [
+    {
+        "dt": "Print Format",
+        "filters": [
+            ["name", "in", ["Quotation Custom"]]
+        ],
+    }
+]
+
 # include js, css files in header of desk.html
 # app_include_css = "/assets/al_sulati/css/al_sulati.css"
 # app_include_js = "/assets/al_sulati/js/al_sulati.js"

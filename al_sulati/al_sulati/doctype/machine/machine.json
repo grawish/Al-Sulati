@@ -5,18 +5,26 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "name1",
+  "item_details_section",
+  "machine_code",
+  "machine_name",
   "parent1",
+  "brand_name",
+  "model_name",
+  "column_break_vxoiv",
+  "description",
   "status",
   "is_from_supplier",
-  "supplier"
+  "supplier",
+  "verifications_section",
+  "registration_expiry_date",
+  "attachments_1",
+  "insurance_expiry_date",
+  "attachments_2",
+  "ppc_expiry_date",
+  "attachments_3"
  ],
  "fields": [
-  {
-   "fieldname": "name1",
-   "fieldtype": "Data",
-   "label": "Name"
-  },
   {
    "fieldname": "status",
    "fieldtype": "Select",
@@ -41,11 +49,83 @@
    "fieldtype": "Link",
    "label": "Parent",
    "options": "Item"
+  },
+  {
+   "fieldname": "item_details_section",
+   "fieldtype": "Section Break",
+   "label": "Item Details"
+  },
+  {
+   "fieldname": "machine_code",
+   "fieldtype": "Data",
+   "label": "Machine Code"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Data",
+   "label": "Machine Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "brand_name",
+   "fieldtype": "Link",
+   "label": "Brand Name",
+   "options": "Brand"
+  },
+  {
+   "fieldname": "model_name",
+   "fieldtype": "Link",
+   "label": "Model Name",
+   "options": "Model"
+  },
+  {
+   "fieldname": "column_break_vxoiv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "verifications_section",
+   "fieldtype": "Section Break",
+   "label": "Verifications"
+  },
+  {
+   "fieldname": "registration_expiry_date",
+   "fieldtype": "Date",
+   "label": "Registration Expiry Date"
+  },
+  {
+   "fieldname": "attachments_1",
+   "fieldtype": "Attach",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "insurance_expiry_date",
+   "fieldtype": "Date",
+   "label": " Insurance Expiry Date"
+  },
+  {
+   "fieldname": "attachments_2",
+   "fieldtype": "Attach",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "ppc_expiry_date",
+   "fieldtype": "Date",
+   "label": "PPC Expiry Date"
+  },
+  {
+   "fieldname": "attachments_3",
+   "fieldtype": "Attach",
+   "label": "Attachments"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-02-16 19:09:47.723593",
+ "modified": "2024-02-17 18:28:51.390685",
  "modified_by": "Administrator",
  "module": "Al Sulati",
  "name": "Machine",

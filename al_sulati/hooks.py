@@ -15,6 +15,13 @@ fixtures = [
         "filters": [
             ["name", "in", ["Quotation Custom"]]
         ],
+    },
+    {
+        "doctype":"Client Script",
+        "or_filters": [
+           {"name": "EMPLOYEE OPERATOR(Status)"},
+            
+        ],
     }
 ]
 

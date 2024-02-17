@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Sales Order",
+  "enabled": 1,
+  "modified": "2024-02-17 21:32:32.701666",
+  "module": "Al Sulati",
+  "name": "EMPLOYEE OPERATOR(Status)",
+  "script": "frappe.ui.form.on(\"Sales Order\", {\n    onload: function (frm) {\n        \n        frm.set_query(\"employee_name\",\"custom_employee\", function () {\n            return {\n                \"filters\": {\n                    \"designation\":\"Operator\",\n                    \"custom_employee_availabilty\":\"idle\",\n                    \n                }\n            };\n        });\n    },\n});\nfrappe.ui.form.on('Sales Order', {\n    after_save: function(frm) {\n        if (frm.doc.docstatus === 1) {\n           frappe.call({\n                method: 'al_sulati.al_sulati.custom.EmployeeStatus.updateEmpStatus',\n                args:{\n                    doc: frm.doc\n           }\n            });\n           \n        }\n    }\n});\n",
+  "view": "Form"
+ }
+]

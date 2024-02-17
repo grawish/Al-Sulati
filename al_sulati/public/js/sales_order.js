@@ -33,7 +33,7 @@ frappe.ui.form.on("Machine Allocation", "item_code", function(frm, cdt, cdn){
 
   field.get_query =  function(){
     return {
-       filters: { parent1: child.item_code }
+       filters: { parent1: child.item_code, status: "Available" }
   }
   grid_row.refresh_field("machine");
 }

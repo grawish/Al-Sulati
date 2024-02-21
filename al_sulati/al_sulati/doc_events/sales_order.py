@@ -18,3 +18,12 @@ def on_submit(doc, method):
         machine = frappe.get_doc('Machine', mach.machine)
         machine.status = 'Engaged'
         machine.save(ignore_permissions=True)
+    #For Employee Doc.
+    for emp in doc.custom_employee:
+        employee = frappe.get_doc('Employee', emp.employee_name)
+        employee.custom_sales_order_id = doc.name  # Accessing the Sales Order ID
+        employee.custom_employee_availabilty = "Engaged"
+        employee.date = doc.transaction_date 
+        employee.custom_customer_name = doc.customer
+        employee.save(ignore_permissions=True)
+

@@ -3,8 +3,6 @@
 
 # import frappe
 from frappe.model.document import Document
-class Machine(Document):
-	def before_save(self):
-		self.machine_name = f"{self.parent1} REG-{self.machine_code or ''}"
 
-
+class AvailableOperators(Document):
+	pass

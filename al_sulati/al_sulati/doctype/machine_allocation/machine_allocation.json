@@ -21,14 +21,14 @@
    "fieldname": "serial_number",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Serial Number",
+   "label": "Machine",
    "options": "Serial No"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-02-27 19:47:19.543387",
+ "modified": "2024-03-05 10:14:08.935000",
  "modified_by": "Administrator",
  "module": "Al Sulati",
  "name": "Machine Allocation",

@@ -20,7 +20,7 @@ fixtures = [
         "doctype":"Client Script",
         "or_filters": [
            {"name": "EMPLOYEE OPERATOR(Status)"},
-            
+           {"name": "Quotation signature"},
         ],
     }
 ]

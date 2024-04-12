@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2024-04-12 16:23:15.020462",
+  "module": "Al Sulati",
+  "name": "Quotation signature",
+  "script": "frappe.ui.form.on('Quotation', {\n    onload: function(frm) {\n        // Fetch the signature from the active Employee\n        frappe.call({\n            method: 'al_sulati.al_sulati.custom.quotation_signature.fetch_active_employee_signature',\n            callback: function(r) {\n                if(r.message) {\n                    // Set the fetched signature in the Quotation doctype\n                    frm.set_value('custom_signature', r.message);\n                }\n            }\n        });\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Sales Order",
   "enabled": 1,
   "modified": "2024-02-17 21:32:32.701666",

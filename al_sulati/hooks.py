@@ -21,6 +21,7 @@ fixtures = [
         "or_filters": [
            {"name": "EMPLOYEE OPERATOR(Status)"},
            {"name": "Quotation signature"},
+           {"name": "Sales Order Amount"},
         ],
     }
 ]

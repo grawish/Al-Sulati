@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Sales Order",
+  "enabled": 1,
+  "modified": "2024-04-18 19:27:13.507081",
+  "module": "Al Sulati",
+  "name": "Sales Order Amount",
+  "script": "frappe.ui.form.on('Sales Order Item', {\r\n    custom_rate_selection: function(frm, cdt, cdn) {\r\n        var child = locals[cdt][cdn];\r\n        if (!child.custom_rate_selection) {\r\n            frappe.model.set_value(cdt, cdn, 'rate', 0);\r\n            return;\r\n        }\r\n        else if (child.custom_rate_selection === 'Monthly') {\r\n            frappe.call({\r\n                method: 'al_sulati.al_sulati.custom.sales_order_amount.fetch_custom_rate',\r\n                args: {\r\n                    doctype: 'Quotation Item',\r\n                    fieldname: 'custom_monthly_rate',\r\n                    prevdoc_docname: child.prevdoc_docname\r\n                },\r\n                callback: function(response) {\r\n                    if (response.message) {\r\n                        frappe.model.set_value(cdt, cdn, 'rate', response.message);\r\n                    }\r\n                }\r\n            });\r\n        } else if (child.custom_rate_selection === 'Weekly') {\r\n             frappe.call({\r\n                method: 'al_sulati.al_sulati.custom.sales_order_amount.fetch_custom_rate',\r\n                args: {\r\n                    doctype: 'Quotation Item',\r\n                    fieldname: 'custom_weekly_rate',\r\n                    prevdoc_docname: child.prevdoc_docname\r\n                },\r\n                callback: function(response) {\r\n                    if (response.message) {\r\n                        frappe.model.set_value(cdt, cdn, 'rate', response.message);\r\n                    }\r\n                }\r\n            });\r\n        } else if (child.custom_rate_selection === 'Daily') {\r\n             frappe.call({\r\n                method: 'al_sulati.al_sulati.custom.sales_order_amount.fetch_custom_rate',\r\n                args: {\r\n                    doctype: 'Quotation Item',\r\n                    fieldname: 'custom_daily_rate',\r\n                    prevdoc_docname: child.prevdoc_docname\r\n                },\r\n                callback: function(response) {\r\n                    if (response.message) {\r\n                        frappe.model.set_value(cdt, cdn, 'rate', response.message);\r\n                    }\r\n                }\r\n            });\r\n        }\r\n    }\r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Quotation",
   "enabled": 1,
   "modified": "2024-04-12 16:23:15.020462",

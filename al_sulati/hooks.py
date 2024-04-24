@@ -23,7 +23,8 @@ fixtures = [
            {"name": "Quotation signature"},
            {"name": "Sales Order Amount"},
            {"name": "sales order button"},
-           {"name":"project Connection Removal"}
+           {"name":"project Connection Removal"},
+           {"name":"Project rate and type"}
         ],
     }
 ]

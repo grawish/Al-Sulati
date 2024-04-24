@@ -22,6 +22,8 @@ fixtures = [
            {"name": "EMPLOYEE OPERATOR(Status)"},
            {"name": "Quotation signature"},
            {"name": "Sales Order Amount"},
+           {"name": "sales order button"},
+           {"name":"project Connection Removal"}
         ],
     }
 ]

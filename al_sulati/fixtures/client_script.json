@@ -4,6 +4,28 @@
   "doctype": "Client Script",
   "dt": "Sales Order",
   "enabled": 1,
+  "modified": "2024-04-23 21:39:48.362415",
+  "module": "Al Sulati",
+  "name": "sales order button",
+  "script": "frappe.ui.form.on('Sales Order', {\r\n   refresh: function(frm) {\r\n       setTimeout(() => {\r\n        frm.remove_custom_button('Sales Invoice', 'Create');\r\n        frm.remove_custom_button('Purchase Order', 'Create');\r\n        frm.remove_custom_button('Subscription', 'Create');\r\n        frm.remove_custom_button('Engagement Record', 'Create');\r\n        frm.remove_custom_button('Work order', 'Create');\r\n        frm.remove_custom_button('Material Request', 'Create');\r\n        frm.remove_custom_button('Pick List', 'Create');\r\n        frm.remove_custom_button('Payment', 'Create');\r\n        frm.remove_custom_button('Work Order', 'Create');\r\n        frm.remove_custom_button('Request for Raw Materials', 'Create');\r\n        frm.remove_custom_button('Payment Request', 'Create');\r\n       }, 10);\r\n   }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Project",
+  "enabled": 1,
+  "modified": "2024-04-24 17:18:46.797263",
+  "module": "Al Sulati",
+  "name": "project Connection Removal",
+  "script": "frappe.ui.form.on('Project', {\nonload (frm) {\nsetTimeout(() => {\n    $(\"[data-doctype='Sales Invoice']\").hide()\n    $(\"[data-doctype='Task']\").hide()\n    $(\"[data-doctype='Project Update']\").hide()\n    $(\"[data-doctype='Issue']\").hide()\n    $(\"[data-doctype='Stock Entry']\").hide()\n    \n    $(\".col-md-4\").each(function() {\n    \n        var sectionName = $(this).find(\".form-link-title\").text().trim();\n    \n            if (sectionName === \"Material\"|| sectionName === \"Purchase\" || sectionName === \"Claims\" ) {\n                $(this).hide(); \n            }\n       });\n       }, 10);\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Sales Order",
+  "enabled": 1,
   "modified": "2024-04-18 19:27:13.507081",
   "module": "Al Sulati",
   "name": "Sales Order Amount",

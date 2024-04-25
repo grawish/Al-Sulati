@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Timesheet",
+  "enabled": 1,
+  "modified": "2024-04-24 20:29:32.778620",
+  "module": "Al Sulati",
+  "name": "Serial Filtering Custom",
+  "script": "frappe.ui.form.on(\"Timesheet\", \"onload\", function(frm) {\n    frm.set_query(\"custom_serial_no\", function() {\n        return {\n            \"filters\": {\n                \"custom_project\": frm.doc.parent_project,\n            }\n        };\n    });\n });",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Project",
   "enabled": 1,
   "modified": "2024-04-23 22:28:27.447445",
@@ -63,6 +74,17 @@
   "module": "Al Sulati",
   "name": "EMPLOYEE OPERATOR(Status)",
   "script": "frappe.ui.form.on(\"Sales Order\", {\n    onload: function (frm) {\n        \n        frm.set_query(\"employee_name\",\"custom_employee\", function () {\n            return {\n                \"filters\": {\n                    \"designation\":\"Operator\",\n                    \"custom_employee_availabilty\":\"idle\",\n                    \n                }\n            };\n        });\n    },\n});\nfrappe.ui.form.on('Sales Order', {\n    after_save: function(frm) {\n        if (frm.doc.docstatus === 1) {\n           frappe.call({\n                method: 'al_sulati.al_sulati.custom.EmployeeStatus.updateEmpStatus',\n                args:{\n                    doc: frm.doc\n           }\n            });\n           \n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Delivery Note",
+  "enabled": 1,
+  "modified": "2024-04-25 07:46:42.762771",
+  "module": "Al Sulati",
+  "name": "Engagement Record Fetch",
+  "script": "frappe.ui.form.on('Delivery Note', {\r\n    project: function(frm) {\r\n        if (frm.doc.project) {\r\n            // Fetch Sales Order linked to the project\r\n            frappe.call({\r\n                method: 'al_sulati.al_sulati.custom.engagement_record_fetch.get_sales_order_items',\r\n                args: {\r\n                    project: frm.doc.project\r\n                },\r\n                callback: function(r) {\r\n                    if (r.message) {\r\n                        // Set Delivery Note items based on Sales Order items\r\n                      frm.clear_table('items');\r\n                        $.each(r.message, function(i, item) {\r\n                            var d = frm.add_child('items');\r\n                            frappe.model.set_value(d.doctype, d.name, 'item_code', item.item_code);\r\n                            frappe.model.set_value(d.doctype, d.name, 'item_name', item.item_name);\r\n                            frappe.model.set_value(d.doctype, d.name, 'custom_rate_selection', item.custom_rate_selection);\r\n                            // Set rate value after receiving the response\r\n                            frappe.model.set_value(d.doctype, d.name, 'rate', item.rate);\r\n                        });\r\n                        frm.refresh_field('items');\r\n                    }\r\n                }\r\n            });\r\n        }\r\n    }\r\n});\r\n",
   "view": "Form"
  }
 ]

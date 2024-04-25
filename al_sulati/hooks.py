@@ -24,7 +24,9 @@ fixtures = [
            {"name": "Sales Order Amount"},
            {"name": "sales order button"},
            {"name":"project Connection Removal"},
-           {"name":"Project rate and type"}
+           {"name":"Project rate and type"},
+           {"name":"Engagement Record Fetch"},
+           {"name":"Serial Filtering Custom"}
         ],
     }
 ]

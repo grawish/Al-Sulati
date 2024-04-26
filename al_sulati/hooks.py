@@ -26,7 +26,8 @@ fixtures = [
            {"name":"project Connection Removal"},
            {"name":"Project rate and type"},
            {"name":"Engagement Record Fetch"},
-           {"name":"Serial Filtering Custom"}
+           {"name":"Serial Filtering Custom"},
+           {"name":"Serial No Fetch"}
         ],
     }
 ]

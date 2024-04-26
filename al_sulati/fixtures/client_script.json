@@ -37,10 +37,10 @@
   "doctype": "Client Script",
   "dt": "Project",
   "enabled": 1,
-  "modified": "2024-04-24 17:18:46.797263",
+  "modified": "2024-04-26 11:54:41.574035",
   "module": "Al Sulati",
   "name": "project Connection Removal",
-  "script": "frappe.ui.form.on('Project', {\nonload (frm) {\nsetTimeout(() => {\n    $(\"[data-doctype='Sales Invoice']\").hide()\n    $(\"[data-doctype='Task']\").hide()\n    $(\"[data-doctype='Project Update']\").hide()\n    $(\"[data-doctype='Issue']\").hide()\n    $(\"[data-doctype='Stock Entry']\").hide()\n    \n    $(\".col-md-4\").each(function() {\n    \n        var sectionName = $(this).find(\".form-link-title\").text().trim();\n    \n            if (sectionName === \"Material\"|| sectionName === \"Purchase\" || sectionName === \"Claims\" ) {\n                $(this).hide(); \n            }\n       });\n       }, 10);\n    }\n});",
+  "script": "frappe.ui.form.on('Project', {\nonload: function(frm) {\nsetTimeout(() => {\n    $(\"[data-doctype='Sales Invoice']\").hide()\n    $(\"[data-doctype='Task']\").hide()\n    $(\"[data-doctype='Project Update']\").hide()\n    $(\"[data-doctype='Issue']\").hide()\n    $(\"[data-doctype='Stock Entry']\").hide()\n    \n    $(\".col-md-4\").each(function() {\n    \n        var sectionName = $(this).find(\".form-link-title\").text().trim();\n    \n            if (sectionName === \"Material\"|| sectionName === \"Purchase\" || sectionName === \"Claims\" ) {\n                $(this).hide(); \n            }\n       });\n       }, 10);\n    }\n});",
   "view": "Form"
  },
  {
@@ -81,10 +81,10 @@
   "doctype": "Client Script",
   "dt": "Delivery Note",
   "enabled": 1,
-  "modified": "2024-04-26 10:15:51.597573",
+  "modified": "2024-04-26 16:36:14.702477",
   "module": "Al Sulati",
   "name": "Engagement Record Fetch",
-  "script": "frappe.ui.form.on('Delivery Note', {\n    project: function(frm) {\n        if (frm.doc.project) {\n            // Fetch Sales Order linked to the project\n            frappe.call({\n                method: 'al_sulati.al_sulati.custom.engagement_record_fetch.get_sales_order_items',\n                args: {\n                    project: frm.doc.project\n                },\n                callback: function(r) {\n                    if (r.message) {\n                        // Set Delivery Note items based on Sales Order items\n                      frm.clear_table('items');\n                        $.each(r.message, function(i, item) {\n                            var d = frm.add_child('items');\n                            frappe.model.set_value(d.doctype, d.name, 'item_code', item.item_code);\n                            frappe.model.set_value(d.doctype, d.name, 'item_name', item.item_name);\n                            frappe.model.set_value(d.doctype, d.name, 'custom_rate_selection', item.custom_rate_selection);\n                            // Set rate value after receiving the response\n                            frappe.model.set_value(d.doctype, d.name, 'rate', item.rate);\n                        });\n                        frm.refresh_field('items');\n                    }\n                }\n            });\n        }\n    }\n});",
+  "script": "frappe.ui.form.on('Delivery Note', {\n    project: function(frm) {\n        if (frm.doc.project) {\n            // Fetch Sales Order linked to the project\n            frappe.call({\n                method: 'al_sulati.al_sulati.custom.engagement_record_fetch.get_sales_order_items',\n                args: {\n                    project: frm.doc.project\n                },\n                callback: function(r) {\n                    if (r.message) {\n                        // Set Delivery Note items based on Sales Order items\n                      frm.clear_table('items');\n                        $.each(r.message, function(i, item) {\n                            var d = frm.add_child('items');\n                            frappe.model.set_value(d.doctype, d.name, 'item_code', item.item_code);\n                            frappe.model.set_value(d.doctype, d.name, 'item_name', item.item_name);\n                            frappe.model.set_value(d.doctype, d.name, 'custom_rate_selection', item.custom_rate_selection);\n                            // Set rate value after receiving the response\n                            frappe.model.set_value(d.doctype, d.name, 'rate', item.rate);\n                        });\n                        frm.refresh_field('items');\n                    }\n                    \n                }\n            });\n        }\n    }\n});",
   "view": "Form"
  },
  {
@@ -92,10 +92,10 @@
   "doctype": "Client Script",
   "dt": "Timesheet",
   "enabled": 1,
-  "modified": "2024-04-26 10:26:03.458654",
+  "modified": "2024-04-26 19:50:37.751405",
   "module": "Al Sulati",
   "name": "Serial No Fetch",
-  "script": "frappe.ui.form.on(\"Timesheet\", {\r\n    onload: function(frm) {\r\n        frm.set_query(\"custom_serial_no\", function() {\r\n            return {\r\n                filters: {\r\n                    custom_project: frm.doc.parent_project,\r\n                }\r\n            };\r\n        });\r\n    },\r\n\r\n    custom_serial_no: function (frm) {\r\n        if (frm.doc.custom_serial_no) {\r\n            frappe.call({\r\n                method: 'al_sulati.al_sulati.custom.timesheet.fetch_serial_no',\r\n                args: {\r\n                    doc: frm.doc            \r\n    },\r\n                callback: function (response) {\r\n                    console.log(response);\r\n                    if (response.message) {\r\n                        frm.clear_table(\"time_logs\");\r\n                        response.message.forEach(item => {\r\n                            const newRow = frappe.model.add_child(frm.doc, \"time_logs\");\r\n                            newRow.custom_registration_no = item.serial_no;\r\n                           \r\n                        });\r\n                       frm.refresh_field('time_logs');\r\n                    }\r\n                }\r\n            });\r\n        }\r\n    }\r\n});\r\n",
+  "script": "frappe.ui.form.on(\"Timesheet\", {\n    onload: function(frm) {\n        frm.set_query(\"custom_serial_no\", function() {\n            return {\n                filters: {\n                    custom_project: frm.doc.parent_project,\n                }\n            };\n        });\n    },\n\n    custom_serial_no: function (frm) {\n        if (frm.doc.custom_serial_no) {\n            frappe.call({\n                method: 'al_sulati.al_sulati.custom.timesheet.fetch_serial_no',\n                args: {\n                    doc: frm.doc            \n    },\n                callback: function (response) {\n                    console.log(response);\n                    if (response.message) {\n                        frm.clear_table(\"time_logs\");\n                        response.message.forEach(item => {\n                            const newRow = frappe.model.add_child(frm.doc, \"time_logs\");\n                            newRow.custom_registration_no = item.serial_no;\n                            newRow.project = frm.doc.parent_project;\n                            newRow.billing_rate=item.custom_rate;\n                            \n                        });\n                       frm.refresh_field('time_logs');\n                    }\n                }\n            });\n        }\n    }\n});",
   "view": "Form"
  }
 ]

@@ -22,6 +22,13 @@ fixtures = [
            {"name": "EMPLOYEE OPERATOR(Status)"},
            {"name": "Quotation signature"},
            {"name": "Sales Order Amount"},
+           {"name": "sales order button"},
+           {"name":"project Connection Removal"},
+           {"name":"Project rate and type"},
+           {"name":"Engagement Record Fetch"},
+           {"name":"Serial Filtering Custom"},
+           {"name":"Serial No Fetch"},
+           {"name":"customer and company fetch"}
         ],
     }
 ]
@@ -148,6 +155,9 @@ doc_events = {
 #     "Purchase Receipt": {
 #         "on_update": "al_sulati.al_sulati.doc_events.purchase_receipt.on_update",
 #     },
+     "Delivery Note": {
+         "before_save": "al_sulati.al_sulati.doc_events.serial_and_batch_bundle_fetch.before_save",
+     },
 }
 
 # Scheduled Tasks

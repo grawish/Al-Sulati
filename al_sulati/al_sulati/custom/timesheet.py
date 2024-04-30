@@ -20,3 +20,15 @@ def fetch_serial_no(doc):
         serial_no_data.append(data)
 
     return serial_no_data
+
+
+@frappe.whitelist()
+def fetch_project_details(project):
+    project_doc = frappe.get_doc("Project", project)
+    if project_doc:
+        return {
+            "customer": project_doc.customer,
+            "company": project_doc.company
+        }
+    else:
+        return None

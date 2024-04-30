@@ -27,7 +27,8 @@ fixtures = [
            {"name":"Project rate and type"},
            {"name":"Engagement Record Fetch"},
            {"name":"Serial Filtering Custom"},
-           {"name":"Serial No Fetch"}
+           {"name":"Serial No Fetch"},
+           {"name":"customer and company fetch"}
         ],
     }
 ]
@@ -154,6 +155,9 @@ doc_events = {
 #     "Purchase Receipt": {
 #         "on_update": "al_sulati.al_sulati.doc_events.purchase_receipt.on_update",
 #     },
+     "Delivery Note": {
+         "before_save": "al_sulati.al_sulati.doc_events.serial_and_batch_bundle_fetch.before_save",
+     },
 }
 
 # Scheduled Tasks

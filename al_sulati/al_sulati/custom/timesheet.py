@@ -27,8 +27,10 @@ def fetch_project_details(project):
     project_doc = frappe.get_doc("Project", project)
     if project_doc:
         return {
+            "project_name": project_doc.project_name,
             "customer": project_doc.customer,
-            "company": project_doc.company
+            "company": project_doc.company,
+            
         }
     else:
         return None

@@ -55,7 +55,8 @@ fixtures = [
 doctype_js = {
     "Purchase Receipt": "public/js/purchase_receipt.js",
     "Sales Invoice": "public/js/sales_invoice_custom_script.js",
-    "Purchase Receipt": "public/js/equipment_onboarding.js"
+    "Purchase Receipt": "public/js/equipment_onboarding.js",
+    "Timesheet": "public/js/timesheet.js"
     }
 
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}

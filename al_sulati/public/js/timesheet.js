@@ -1,5 +1,11 @@
 frappe.ui.form.on("Timesheet", {
     onload: function(frm) {
+
+        // if (frm.doc.parent_project) {
+        //     populate_project_details(frm, frm.doc.parent_project);
+        // }
+
+        
         frm.set_query("custom_serial_no", function() {
             return {
                 filters: {
@@ -8,6 +14,13 @@ frappe.ui.form.on("Timesheet", {
             };
         });
     },
+
+    // parent_project: function(frm) {
+    //     if (frm.doc.parent_project) {
+    //         populate_project_details(frm, frm.doc.parent_project);
+    //     }
+    // },
+ 
 
     custom_serial_no: function(frm) {
         if (frm.doc.custom_serial_no) {
@@ -56,6 +69,26 @@ frappe.ui.form.on("Timesheet", {
         }
     }
 });
+
+
+// function populate_project_details(frm, project) {
+//     frappe.call({
+//         method: 'al_sulati.al_sulati.custom.timesheet.fetch_project_details',
+//         args: {
+//             project: project
+//         },
+//         callback: function(response) {
+//             if (response.message) {
+//                 frm.set_value('project_name', response.message.project_name);
+//                 frm.set_value('customer', response.message.customer);
+//                 frm.set_value('company', response.message.company);
+//                 frm.set_value('currency', response.message.currency);
+//                 frm.set_value('serial_no', response.message.serial_no);
+//             }
+//         }
+//     });
+//  }
+ 
 
 function update_time_logs(frm, serial_no_data, selected_reg_no) {
     frm.clear_table("time_logs");

@@ -158,6 +158,12 @@ doc_events = {
      "Delivery Note": {
          "before_save": "al_sulati.al_sulati.doc_events.serial_and_batch_bundle_fetch.before_save",
      },
+     "Sales Order": {
+        "on_submit": "al_sulati.overrides.sales_order.on_submit_sales_order_wrapper",
+        "validate": "al_sulati.overrides.sales_order.override_validate_payment_schedule_dates"
+    }
+  
+ 
 }
 
 # Scheduled Tasks

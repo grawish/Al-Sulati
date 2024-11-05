@@ -129,6 +129,7 @@
    "width": null
   }
  ],
+
  "custom_perms": [],
  "doctype": "Purchase Order",
  "links": [],
@@ -147,6 +148,7 @@
    "idx": 0,
    "is_system_generated": 0,
    "modified": "2024-10-18 20:02:49.141929",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-base_rounded_total-hidden",
@@ -169,7 +171,9 @@
    "field_name": "base_rounded_total",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.151429",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-base_rounded_total-print_hide",
@@ -192,7 +196,9 @@
    "field_name": "column_break_7",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.161234",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-column_break_7-hidden",
@@ -215,7 +221,9 @@
    "field_name": "disable_rounded_total",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.170948",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-disable_rounded_total-default",
@@ -238,7 +246,9 @@
    "field_name": "due_date",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.180734",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-due_date-print_hide",
@@ -261,7 +271,9 @@
    "field_name": "in_words",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.190418",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-in_words-hidden",
@@ -284,7 +296,9 @@
    "field_name": "in_words",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.200287",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-in_words-print_hide",
@@ -299,6 +313,7 @@
    "_comments": null,
    "_liked_by": null,
    "_user_tags": null,
+
    "creation": "2024-11-05 14:09:03.082028",
    "default_value": null,
    "doc_type": "Purchase Order",
@@ -346,6 +361,7 @@
    "_liked_by": null,
    "_user_tags": null,
    "creation": "2024-10-19 00:55:33.818688",
+
    "default_value": null,
    "doc_type": "Purchase Order",
    "docstatus": 0,
@@ -353,7 +369,9 @@
    "field_name": "naming_series",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-19 00:55:33.818688",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-naming_series-options",
@@ -361,7 +379,9 @@
    "property": "options",
    "property_type": "Text",
    "row_name": null,
-   "value": "PO-.YY..MM..###\nSO-.YY..MM.###"
+
+   "value": "PO-.YY.-.MM.-\nSAL-ORD-.YYYY.-"
+
   },
   {
    "_assign": null,
@@ -376,7 +396,9 @@
    "field_name": "payment_schedule",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.219742",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-payment_schedule-print_hide",
@@ -399,7 +421,9 @@
    "field_name": "rounded_total",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.229414",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-rounded_total-hidden",
@@ -422,7 +446,9 @@
    "field_name": "rounded_total",
    "idx": 0,
    "is_system_generated": 0,
+
    "modified": "2024-10-18 20:02:49.239004",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-rounded_total-print_hide",
@@ -445,7 +471,9 @@
    "field_name": "scan_barcode",
    "idx": 0,
    "is_system_generated": 1,
+
    "modified": "2024-10-18 20:02:49.248627",
+
    "modified_by": "Administrator",
    "module": null,
    "name": "Purchase Order-scan_barcode-hidden",

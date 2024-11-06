@@ -35,3 +35,33 @@ frappe.ui.form.on('Timesheet', {
         });
     }
 });
+
+
+
+
+frappe.ui.form.on('Sales Invoice', {
+    onload: function(frm) {
+        let displayed_po = [];  
+
+        frm.doc.items.forEach(item => {
+            if (item.sales_order && !displayed_po.includes(item.sales_order)) {
+                frappe.db.get_value('Purchase Order', {'custom_sales_order_id': item.sales_order}, 'name')
+                    .then(r => {
+                        if (r && r.message && r.message.name) {
+                            const po_name = r.message.name;
+
+                           
+                            if (!displayed_po.includes(po_name)) {
+                                displayed_po.push(po_name);
+
+                                frm.dashboard.set_headline_alert(
+                                    __('Please create a Purchase Invoice against this Purchase Order: <a href="/app/purchase-order/{0}" ">{0}</a>', [po_name]),
+                                    'orange'
+                                );
+                            }
+                        }
+                    });
+            }
+        });
+    }
+});

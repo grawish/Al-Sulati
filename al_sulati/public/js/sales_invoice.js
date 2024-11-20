@@ -49,16 +49,21 @@ frappe.ui.form.on('Sales Invoice', {
                     .then(r => {
                         if (r && r.message && r.message.name) {
                             const po_name = r.message.name;
+                            frappe.db.count('Purchase Invoice Item', {
+                                filters: {
+                                    'purchase_order': po_name,
+                                    'docstatus': 1 
+                                }
+                            }).then(count => {
+                                if (count === 0 && !displayed_po.includes(po_name)) {
+                                    displayed_po.push(po_name);
 
-                           
-                            if (!displayed_po.includes(po_name)) {
-                                displayed_po.push(po_name);
-
-                                frm.dashboard.set_headline_alert(
-                                    __('Please create a Purchase Invoice against this Purchase Order: <a href="/app/purchase-order/{0}" ">{0}</a>', [po_name]),
-                                    'orange'
-                                );
-                            }
+                                    frm.dashboard.set_headline_alert(
+                                        __('Please create a Purchase Invoice against this Purchase Order: <a href="/app/purchase-order/{0}" ">{0}</a>', [po_name]),
+                                        'orange'
+                                    );
+                                }
+                            });
                         }
                     });
             }
